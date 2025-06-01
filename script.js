@@ -1,4 +1,4 @@
-const API_KEY = 'AIzaSyBiQDl1qxHL4hOe5yP4BPqBWlIETuU3RxQ';
+const API_KEY = 'AIzaSyDwC0JkvLli2KP9qR0if78ZwgrhSwVjHEU';
 let currentTheme = 'dark';
 let conversations = {};
 let currentConversationId = null;
