@@ -1,5 +1,5 @@
 // Add your OpenRouter API key here
-const API_KEY = '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';
+const API_KEY = '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';
 let currentTheme = 'dark';
 let conversations = {};
 let currentConversationId = null;
