@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a192f">
+    <title>LAURIXY AI - AI That Builds the Future</title>
+    <meta name="description" content="LAURIXY AI - Advanced artificial intelligence platform that builds the future through innovative solutions.">
+    <meta name="keywords" content="AI, artificial intelligence, LAURIXY, future technology">
+    <meta property="og:title" content="LAURIXY AI">
+    <meta property="og:description" content="AI That Builds the Future">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="particle-container" id="particleContainer"></div>
+        <div class="loading-content">
+            <div class="hexagon-loader">
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon-center"></div>
+            </div>
+            <h1 class="loading-title">LAURIXY AI</h1>
+            <p class="loading-subtitle">AI That Builds the Future</p>
+            <div class="loading-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Chat History</h3>
+            <button class="close-sidebar" onclick="toggleHistory()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-content" id="historyContainer">
+            <!-- Chat history will be populated here -->
+        </div>
+        <div class="sidebar-footer">
+            <button class="action-btn" id="clearHistoryBtn" onclick="clearAllHistory()">
+                <i class="fas fa-trash"></i> Clear All History
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="header">
+        <div class="header-left">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <div class="header-title" style="display: flex; align-items: center; gap: 16px;">
+            <img src="logo.png" alt="Laurixy AI Logo" style="height: 48px; width: auto; border-radius: 12px; box-shadow: 0 2px 12px rgba(82,82,232,0.12);" />
+        </div>
+        <div class="header-actions">
+            <button class="history-toggle" onclick="toggleHistory()" title="Chat History">
+                <i class="fas fa-history"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="actions-bar">
+        <button class="action-btn" id="clearButton" onclick="clearChat()">
+            <i class="fas fa-trash"></i> Clear Chat
+        </button>
+    </div>
+
+    <div class="chat-container" id="chatContainer"></div>
+
+    <button class="fab" id="scrollToTopBtn" title="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="input-container">
+        <div class="version-selector-custom" id="versionSelectorCustom">
+            <button class="version-selected" id="versionSelectedBtn" type="button">
+                <span id="versionSelectedText">LAURIXY v1</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="version-options" id="versionOptions" style="display: none;">
+                <button class="version-option" data-version="v1">LAURIXY v1</button>
+                <button class="version-option" data-version="v2">LAURIXY v2</button>
+                <button class="version-option" data-version="v3">LAURIXY v3</button>
+                <button class="version-option" data-version="v4">LAURIXY v4</button>
+            </div>
+        </div>
+        <div class="input-wrapper">
+            <div class="textarea-container">
+            <textarea 
+                id="inputField" 
+                placeholder="Ask LAURIXY AI anything..."
+                rows="1"
+                onkeydown="handleKeyDown(event)"
+            ></textarea>
+            <div class="controls">
+                    <button id="sendButton" class="send-btn" onclick="generateResponse()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <button id="stopButton" class="send-btn" onclick="stopGeneration()">
+                        <i class="fas fa-stop"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="recording-indicator" id="recordingIndicator">
+                <div class="recording-pulse"></div>
+                <span>Recording... Speak now</span>
+            </div>
+            
+            <div class="input-tools">
+                <div class="tool-buttons">
+                    <button class="tool-btn" onclick="startVoiceInput()" title="Voice Input">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="loading" id="loading">
+            <div class="dot-flashing"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
