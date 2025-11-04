@@ -1,9 +1,9 @@
 // Add your OpenRouter API key here
 const API_KEYS = {
-    v1: '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',
-    v2: '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',
-    v3: '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',
-    v4: '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'
+    v1: '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',
+    v2: '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',
+    v3: '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',
+    v4: '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'
 };
 let currentTheme = 'dark';
 let conversations = {};
