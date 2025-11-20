@@ -23,17 +23,17 @@ let voiceSettings = {
 // Model endpoints for each version
 const MODEL_ENDPOINTS = {
     v1: 'openai/gpt-oss-20b:free',
-    v2: 'z-ai/glm-4.5-air:free',
-    v3: 'meta-llama/llama-3.3-70b-instruct:free',
-    v4: 'qwen/qwen-3-235b-a22b:free'
+    v2: 'meta-llama/llama-3.3-70b-instruct:free',
+    v3: 'z-ai/glm-4.5-air:free',
+    v4: 'x-ai/grok-4.1-fast:free'
 };
 
 // Model power rankings (1-5 stars)
 const MODEL_POWER = {
     v1: { name: 'OpenAI GPT-OSS 20B', power: 3, description: 'Good general purpose' },
-    v2: { name: 'GLM-4.5-Air', power: 3, description: 'Balanced performance' },
-    v3: { name: 'Meta Llama 3.3 70B', power: 4, description: 'Excellent for chat' },
-    v4: { name: 'Qwen3 235B A22B', power: 5, description: 'Most powerful - Advanced reasoning' }
+    v2: { name: 'Meta Llama 3.3 70B', power: 4, description: 'Excellent for chat' },
+    v3: { name: 'GLM-4.5-Air', power: 3, description: 'Balanced performance' },
+    v4: { name: 'Grok-4.1-Fast', power: 5, description: 'Most powerful - Advanced reasoning & speed' }
 };
 let currentVersion = 'v1';
 let modelEndpoint = MODEL_ENDPOINTS[currentVersion];
