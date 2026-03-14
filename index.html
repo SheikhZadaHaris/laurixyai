@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="LAURIXY AI — AI That Builds the Future. A premium AI platform with chat, thinking AI, image generation, voice assistant, web search, and canvas coding workspace.">
+    <meta name="keywords" content="LAURIXY AI, AI Chat, Image Generation, Voice Assistant, AI Platform">
+    <meta name="author" content="LAURIXY">
+    <meta name="theme-color" content="#0a0a1a">
+
+    <title>LAURIXY AI — AI That Builds the Future</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/VYBdZzXZ/remove-photos-removed-background-2-removebg-preview.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===================== AUTH SCREEN ===================== -->
+    <div id="auth-screen" class="auth-screen">
+        <div class="auth-particles" id="auth-particles"></div>
+        <div class="auth-container">
+            <div class="auth-logo-wrap">
+                <img src="https://i.ibb.co/VYBdZzXZ/remove-photos-removed-background-2-removebg-preview.png" alt="LAURIXY AI" class="auth-logo" id="auth-logo-img">
+                <h1 class="auth-title">LAURIXY <span class="neon-text">AI</span></h1>
+                <p class="auth-tagline">AI That Builds the Future</p>
+            </div>
+
+            <div class="auth-card glass-panel">
+                <!-- Login Tab -->
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login" id="tab-login">Sign In</button>
+                    <button class="auth-tab" data-tab="register" id="tab-register">Sign Up</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <div class="input-group">
+                        <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                        <input type="email" id="login-email" placeholder="Email address" required autocomplete="email">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                        <input type="password" id="login-password" placeholder="Password" required autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="btn-login">
+                        <span>Sign In</span>
+                        <span class="btn-loader hidden"></span>
+                    </button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="auth-form">
+                    <div class="input-group">
+                        <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                        <input type="text" id="register-name" placeholder="Full name" required>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                        <input type="email" id="register-email" placeholder="Email address" required autocomplete="email">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                        <input type="password" id="register-password" placeholder="Password (min 6 chars)" required minlength="6" autocomplete="new-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="btn-register">
+                        <span>Create Account</span>
+                        <span class="btn-loader hidden"></span>
+                    </button>
+                </form>
+
+                <div class="auth-divider"><span>or continue with</span></div>
+
+                <div class="auth-social">
+                    <button class="btn btn-google" id="btn-google-login">
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                        <span>Google</span>
+                    </button>
+                    <button class="btn btn-guest" id="btn-guest-login">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span>Guest Mode</span>
+                    </button>
+                </div>
+
+                <div id="auth-error" class="auth-error hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== MAIN APP ===================== -->
+    <div id="app" class="app hidden">
+
+        <!-- ===== SIDEBAR ===== -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo-wrap">
+                    <img src="https://i.ibb.co/VYBdZzXZ/remove-photos-removed-background-2-removebg-preview.png" alt="LAURIXY AI" class="sidebar-logo" id="sidebar-logo-img">
+                    <span class="sidebar-brand">LAURIXY <span class="neon-text">AI</span></span>
+                </div>
+                <button class="btn-icon" id="btn-sidebar-close" title="Close sidebar">✕</button>
+            </div>
+
+            <button class="btn btn-new-chat" id="btn-new-chat">
+                <span>＋</span> New Chat
+            </button>
+
+            <div class="sidebar-search">
+                <input type="text" id="chat-search" placeholder="Search chats..." class="search-input">
+            </div>
+
+            <div class="sidebar-chats" id="chat-list">
+                <!-- Chat items rendered by JS -->
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="sidebar-footer-btn" id="btn-settings" title="Settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings
+                </button>
+                <button class="sidebar-footer-btn" id="btn-admin" style="display: none;" onclick="window.location.href='admin.html'" title="Admin Panel">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Admin
+                </button>
+                <button class="sidebar-footer-btn" id="btn-export-chat" title="Export Chat">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Export
+                </button>
+                <button class="sidebar-footer-btn danger" id="btn-logout" title="Logout">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="main-content" id="main-content">
+
+            <!-- Top Bar -->
+            <header class="topbar" id="topbar">
+                <div class="topbar-left">
+                    <button class="btn-icon" id="btn-sidebar-toggle" title="Toggle sidebar">☰</button>
+                    <div class="model-indicator" id="model-indicator">
+                        <span class="model-dot"></span>
+                        <span class="model-name" id="current-model-name">LAURIXY AI</span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="user-avatar" id="user-avatar" title="Profile">
+                        <span id="user-initials">U</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Chat Area -->
+            <div class="chat-area" id="chat-area">
+                <!-- Welcome Screen -->
+                <div class="welcome-screen" id="welcome-screen">
+                    <div class="welcome-glow"></div>
+                    <img src="https://i.ibb.co/VYBdZzXZ/remove-photos-removed-background-2-removebg-preview.png" alt="LAURIXY AI" class="welcome-logo">
+                    <h2 class="welcome-title">Welcome to <span class="neon-text">LAURIXY AI</span></h2>
+                    <p class="welcome-subtitle">AI That Builds the Future</p>
+                    <div class="welcome-suggestions" id="welcome-suggestions">
+                        <button class="suggestion-card" data-prompt="Write a creative story about a futuristic city">
+                            <span class="suggestion-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+                            <span>Write a creative story</span>
+                        </button>
+                        <button class="suggestion-card" data-prompt="Help me write Python code to build a REST API">
+                            <span class="suggestion-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+                            <span>Help me code a REST API</span>
+                        </button>
+                        <button class="suggestion-card" data-prompt="Explain quantum computing in simple terms">
+                            <span class="suggestion-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
+                            <span>Explain quantum computing</span>
+                        </button>
+                        <button class="suggestion-card" data-prompt="Plan a 7-day travel itinerary for Japan">
+                            <span class="suggestion-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                            <span>Plan a travel itinerary</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Messages Container -->
+                <div class="messages-container" id="messages-container">
+                    <!-- Messages rendered by JS -->
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area" id="input-area">
+                <div class="input-bar glass-panel">
+                    <button class="btn-icon input-action btn-mic" id="btn-voice" title="Voice input">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    </button>
+                    <button class="btn-icon input-action btn-pro" id="btn-thinking-mode" title="Toggle PRO Mode (Thinking)">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.54Z"/>
+                            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.54Z"/>
+                        </svg>
+                    </button>
+                    <div class="input-wrapper">
+                        <textarea id="chat-input" placeholder="Message LAURIXY AI..." rows="1" maxlength="10000"></textarea>
+                    </div>
+                    <button class="btn-icon input-action send-btn" id="btn-send" title="Send message" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+                    </button>
+                    <button class="btn-icon input-action stop-btn hidden" id="btn-stop" title="Stop generating">
+                        <span class="stop-icon">■</span>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <span class="input-hint">LAURIXY AI can make mistakes. Verify important information.</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- ===== VOICE OVERLAY ===== -->
+        <div class="voice-overlay hidden" id="voice-overlay">
+            <div class="voice-content glass-panel">
+                <div class="voice-visualizer" id="voice-visualizer">
+                    <div class="voice-ring ring-1"></div>
+                    <div class="voice-ring ring-2"></div>
+                    <div class="voice-ring ring-3"></div>
+                    <span class="voice-mic-icon">🎤</span>
+                </div>
+                <p class="voice-status" id="voice-status">Listening...</p>
+                <p class="voice-transcript" id="voice-transcript"></p>
+                <div class="voice-actions">
+                    <button class="btn btn-secondary" id="btn-voice-cancel">Cancel</button>
+                    <button class="btn btn-primary" id="btn-voice-send">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SETTINGS MODAL ===== -->
+        <div class="modal-overlay hidden" id="settings-modal">
+            <div class="modal glass-panel">
+                <div class="modal-header">
+                    <h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</h2>
+                    <button class="btn-icon" id="btn-settings-close">✕</button>
+                </div>
+                <div class="modal-body">
+                    <!-- API Key Section -->
+                    <div class="settings-section" id="api-key-section">
+                        <h3>🔑 OpenRouter API Key</h3>
+                        <div id="user-api-section">
+                            <p class="settings-desc">Add your API key to use LAURIXY AI models.</p>
+                            <div class="input-group">
+                                <input type="password" id="api-key-input" placeholder="sk-or-v1-..." class="settings-input">
+                            </div>
+                            <div class="settings-actions">
+                                <button class="btn btn-primary btn-sm" id="btn-save-api-key">Save Key</button>
+                                <button class="btn btn-danger btn-sm" id="btn-remove-api-key">Remove Key</button>
+                                <a href="https://openrouter.ai/keys" target="_blank" class="btn btn-secondary btn-sm">Get OpenRouter API Key ↗</a>
+                            </div>
+                            <div id="api-key-status" class="settings-status"></div>
+                        </div>
+                        <div id="admin-api-message" class="admin-enforce-msg hidden">
+                            <div class="admin-enforce-badge">PRO</div>
+                            <p>Admin has enforced a <strong>Master API Key</strong>. You don't need to add your own key to use the service.</p>
+                        </div>
+                    </div>
+
+                    <!-- Voice Settings -->
+                    <div class="settings-section">
+                        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg> Voice Settings</h3>
+                        <div class="settings-row">
+                            <label>Voice Speed</label>
+                            <input type="range" id="voice-speed" min="0.5" max="2" step="0.1" value="1">
+                            <span id="voice-speed-val">1.0</span>
+                        </div>
+                        <div class="settings-row">
+                            <label>Voice Pitch</label>
+                            <input type="range" id="voice-pitch" min="0.5" max="2" step="0.1" value="1">
+                            <span id="voice-pitch-val">1.0</span>
+                        </div>
+                        <div class="settings-row">
+                            <label>Enable Voice Replies</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="voice-replies-toggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <label>Speech Language</label>
+                            <select id="speech-lang" class="settings-select">
+                                <option value="en-US">English (US)</option>
+                                <option value="ur-PK">Urdu (Pakistan)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== EXPORT MODAL ===== -->
+        <div class="modal-overlay hidden" id="export-modal">
+            <div class="modal glass-panel modal-sm">
+                <div class="modal-header">
+                    <h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Export Chat</h2>
+                    <button class="btn-icon" id="btn-export-close">✕</button>
+                </div>
+                <div class="modal-body">
+                    <p class="settings-desc">Export current chat conversation.</p>
+                    <div class="export-actions">
+                        <button class="btn btn-primary" id="btn-export-txt">Export as TXT</button>
+                        <button class="btn btn-secondary" id="btn-export-json">Export as JSON</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CANVAS MODAL ===== -->
+        <div class="canvas-overlay hidden" id="canvas-overlay">
+            <div class="canvas-workspace">
+                <div class="canvas-header">
+                    <div class="canvas-title-wrap">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--neon-blue);"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        <h3>Canvas Workspace</h3>
+                        <span class="canvas-lang" id="canvas-lang">javascript</span>
+                    </div>
+                    <div class="canvas-actions">
+                        <button class="btn btn-sm btn-secondary" id="btn-canvas-copy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy</button>
+                        <button class="btn btn-sm btn-secondary" id="btn-canvas-download"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</button>
+                        <button class="btn btn-sm btn-primary" id="btn-canvas-run"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><polygon points="5 3 19 12 5 21 5 3"/></svg> Preview</button>
+                        <button class="btn btn-sm btn-secondary" id="btn-canvas-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Exit</button>
+                    </div>
+                </div>
+                <div class="canvas-body">
+                    <div class="canvas-editor-wrap">
+                        <textarea id="canvas-editor" class="canvas-editor" spellcheck="false"></textarea>
+                    </div>
+                    <div class="canvas-preview-wrap hidden" id="canvas-preview-wrap">
+                        <iframe id="canvas-preview" class="canvas-preview" sandbox="allow-scripts allow-modals"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- ===== TOAST CONTAINER ===== -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <!-- ===================== SCRIPTS ===================== -->
+    <!-- Firebase CDN -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+
+    <!-- Marked.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.1/marked.min.js"></script>
+
+    <!-- App Modules -->
+    <script src="utils.js"></script>
+    <script src="firebase.js"></script>
+    <script src="ui.js"></script>
+    <script src="voice.js"></script>
+    <script src="canvas.js"></script>
+    <script src="ai.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
